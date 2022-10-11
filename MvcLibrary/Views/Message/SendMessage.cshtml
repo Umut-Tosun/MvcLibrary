@@ -1,0 +1,134 @@
+﻿@model MvcLibrary.Models.Entity.Messages
+@{
+    ViewBag.Title = "SendMessage";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>AdminLTE 3 | Compose Message</title>
+
+    <!-- Tell the browser to be responsive to screen width -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+
+    <!-- Ionicons -->
+
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+    <!-- Theme style -->
+
+    <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+
+    <!-- summernote -->
+
+    <link rel="stylesheet" href="../../plugins/summernote/summernote-bs4.css">
+
+    <!-- Google Font: Source Sans Pro -->
+
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+</head>
+
+<body class="hold-transition sidebar-mini">
+
+    <!-- Navbar -->
+    <!-- Main content -->
+
+    <section class="content">
+
+        <div class="container-fluid">
+
+            <div class="row">
+
+
+                @Html.Action("PartialSlider", "Message")
+                <div class="col-md-9">
+                    <form class="form-group" method="post">
+
+                        <div>
+                            <div class="card card-primary card-outline">
+                                <div class="card-header">
+
+                                    <h3 class="card-title">Yeni Mesaj Oluştur</h3>
+
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <input class="form-control" name="ReceivingMember" placeholder="Kime:">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input class="form-control" name="Subject" placeholder="Konu:">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <textarea class="form-control" name="MessageText" placeholder="Mesaj:" style="height: 400px"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+
+                                <div class="float-right">
+                                    <button type="submit" class="btn btn-primary"><i class="far fa-envelope"></i> Gönder</button>
+                                </div>
+                                <button type="reset" class="btn btn-default"><i class="fas fa-times"></i> İptal</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+
+
+    <script src="~/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap 4 -->
+
+    <script src="~/AdminLTE-3.0.4/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- AdminLTE App -->
+
+    <script src="~/AdminLTE-3.0.4/dist/js/adminlte.min.js"></script>
+
+    <!-- AdminLTE for demo purposes -->
+
+    <script src="~/AdminLTE-3.0.4/dist/js/demo.js"></script>
+
+    <!-- Summernote -->
+
+    <script src="~/AdminLTE-3.0.4/plugins/summernote/summernote-bs4.min.js"></script>
+
+    <!-- Page Script -->
+
+    <script>
+        $(function () {
+
+            //Add text editor
+
+            $('#compose-textarea').summernote()
+
+        })</script>
+
+</body>
+
+</html>
+
+

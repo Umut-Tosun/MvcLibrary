@@ -1,0 +1,27 @@
+﻿@using MvcLibrary.Models.Entity
+@model List<Tbl_Announcement>
+@foreach (var item in Model)
+{
+    <div class="post">
+
+        <div class="user-block">
+
+            <img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg" alt="user image">
+
+            <span class="username">
+
+                <a href="#">@item.Title</a>
+
+                <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
+
+            </span>
+
+            <span class="description">Paylaşılma Tarihi - @Convert.ToDateTime(item.Date).ToString("dd/MM/yyyy")</span>
+
+        </div>
+        <p>
+           @item.Content
+        </p>
+
+    </div>
+}

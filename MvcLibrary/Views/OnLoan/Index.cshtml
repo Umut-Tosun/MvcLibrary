@@ -1,0 +1,49 @@
+﻿@using MvcLibrary.Models.Entity
+@model List<Transactions>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h2>Ödünç Kitap Listesi</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Kitap Ad</th>
+        <th>Üye Ad</th>
+        <th>Personel Ad</th>
+        <th>Alış Tarihi</th>
+        <th>İade Tarihi</th>
+        <th>İade Onay</th>
+        <th>Cezalı Gün</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        var difference = DateTime.Now - item.Return_Date;
+        <tr>
+
+
+            <td>@item.ID</td>
+            <td>@item.Tbl_Book.Name</td>
+            <td>@item.Tbl_Member.FirstName @item.Tbl_Member.LastName</td>
+            <td>@item.Tbl_Employee.FirstName  @item.Tbl_Employee.LastName</td>
+            <td>@Convert.ToDateTime(item.Checkout_Date).ToString("dd/MM/yyyy")</td>
+            <td>@Convert.ToDateTime(item.Return_Date).ToString("dd/MM/yyyy")</td>
+
+            <td><a href="/OnLoan/ReturnBook/@item.ID" class="btn btn-primary">Kitap İadesini Onayla</a></td>
+            @if (@difference.Value.Days > 0)
+            {
+                <td>@difference.Value.Days</td>
+            }
+            else
+            {
+                <td>Ceza Yok</td>
+            }
+        </tr>
+    }
+</table>
+<a href="/OnLoan/ToLend/" class="btn btn-success">Kitap Ödünç Ver</a>
+<br />
+

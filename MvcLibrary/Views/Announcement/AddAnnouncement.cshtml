@@ -1,0 +1,21 @@
+﻿@model MvcLibrary.Models.Entity.Tbl_Announcement
+@{
+    ViewBag.Title = "AddAnnouncement";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h2>Duyuru Ekle</h2>
+
+<form class="form-group" method="post">
+    <label>Başlık</label>
+    @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+    <br />
+    <label>İçerik</label>
+    @Html.TextAreaFor(x => x.Content,5,10, new { @class = "form-control" })
+    <br />
+    <label>Kategori</label>
+    @Html.TextBoxFor(x => x.Category, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-success">Duyuru Ekle</button>
+</form>
+

@@ -1,0 +1,13 @@
+﻿@model MvcLibrary.Models.Entity.Tbl_Categories
+@{
+    ViewBag.Title = "AddCategory";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h2>Kategori Ekle</h2>
+<form class="form-group" method="post">
+    <label>Kategori Adı</label>
+    <input name="Name" type="text" class="form-control" />
+    <br />
+    <button class="btn btn-success">Ekle</button>
+</form>

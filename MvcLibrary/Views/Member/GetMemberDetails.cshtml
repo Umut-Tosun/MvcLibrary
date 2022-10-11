@@ -1,0 +1,32 @@
+﻿@using MvcLibrary.Models.Entity
+@model List<Transactions>
+@{
+    ViewBag.Title = "GetMemberDetails";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h2>@ViewBag.memberFullName Kitap Geçmişi</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Kitap Ad</th>
+        <th>Alış Tarihi</th>
+        <th>İade Tarihi</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            <td>@item.ID</td>
+            <td>@item.Tbl_Book.Name</td>
+            <td>@Convert.ToDateTime(item.Checkout_Date).ToString("dd/MM/yyyy")</td>
+            <td>@Convert.ToDateTime(item.Return_Date).ToString("dd/MM/yyyy")</td>
+        </tr>
+    }
+</table>
+<br />
+<a class="btn btn-info" href="/Member/Index/">Üyeler Tablosuna Geri Dön</a>
+
+
+

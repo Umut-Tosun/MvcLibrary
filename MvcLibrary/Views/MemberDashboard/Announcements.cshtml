@@ -1,0 +1,43 @@
+﻿@using MvcLibrary.Models.Entity
+
+@model List<Tbl_Announcement>
+@{
+    ViewBag.Title = "Announcements";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+    string renk = "";
+}
+
+<h2>Duyurular</h2>
+
+<table class="table table-bordered">
+        <tr>
+            <th>#</th>
+            <th>Başlık</th>
+            <th>Kategori</th>
+            <th>İçerik</th>
+            <th>Tarih</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            if(item.Category=="Genel Duyuru")
+            {
+                renk = "bg-info text-white";
+            }
+            else if(item.Category== "Üye Cezaları")
+            {
+                renk = "bg-danger text-white";
+            }
+            else
+            {
+                renk = "bg-success text-white";
+            }
+            <tr class="@renk">
+                <td>@item.ID</td>
+                <td>@item.Title</td>
+                <td >@item.Category</td>
+                <td>@item.Content</td>
+                <td>@Convert.ToDateTime(item.Date).ToString("dd/MM/yyyy")</td>            
+            </tr>
+        }
+</table>
+

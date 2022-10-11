@@ -1,0 +1,38 @@
+﻿@model MvcLibrary.Models.Entity.Tbl_Book
+@{
+    ViewBag.Title = "GetBook";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h2>Kitap Güncelle</h2>
+
+@using (Html.BeginForm("UpdateBook", "Book", FormMethod.Get))
+{
+    <div class="form-group">
+        <br />
+        @Html.Label("Kitap ID")
+        @Html.TextBoxFor(x => x.ID, new { @readonly = "true", @class = "form-control" })
+        <br />
+        @Html.Label("Kitap Ad")
+        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+        <br />
+        @Html.Label("Sayfa Sayısı")
+        @Html.TextBoxFor(x => x.PageCount, new { @class = "form-control" })
+        <br />
+        @Html.Label("Basım Yılı")
+        @Html.TextAreaFor(x => x.PublicationYear, new { @class = "form-control" })
+        <br />
+        <label>Kitap Kategori</label>
+        @Html.DropDownListFor(x => x.Tbl_Categories.ID, (List<SelectListItem>)ViewBag.categories, new { @class = "form-control" })
+        <br />
+        <label>Kitap Yazar</label>
+        @Html.DropDownListFor(x => x.Tbl_Writer.ID, (List<SelectListItem>)ViewBag.writers, new { @class = "form-control" })
+        <br />
+        <label>Kitap Yayın Evi</label>
+        @Html.DropDownListFor(x => x.Tbl_Publisher.ID, (List<SelectListItem>)ViewBag.publishers, new { @class = "form-control" })
+        <br />
+        <button class="btn btn-primary">Güncelle</button>
+    </div>
+
+}
+

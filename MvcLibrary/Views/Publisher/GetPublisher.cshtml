@@ -1,0 +1,22 @@
+﻿@model MvcLibrary.Models.Entity.Tbl_Publisher
+@{
+    ViewBag.Title = "GetMember";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h2>Yayın Evi Güncelle</h2>
+
+@using (Html.BeginForm("UpdatePublisher", "Publisher", FormMethod.Post))
+{
+    <div class="form-group">
+        <br />
+        @Html.Label("Üye ID")
+        @Html.TextBoxFor(x => x.ID, new { @readonly = "true", @class = "form-control" })
+        <br />
+        @Html.Label("Yayın Evi Adı")
+        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+        <br />
+        <button class="btn btn-primary">Güncelle</button>
+    </div>
+}
+

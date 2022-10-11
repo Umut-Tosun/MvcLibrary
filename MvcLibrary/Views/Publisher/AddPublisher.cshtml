@@ -1,0 +1,18 @@
+﻿@model MvcLibrary.Models.Entity.Tbl_Publisher
+@{
+    ViewBag.Title = "AddPublisher";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h2>Yayın Evi Ekle</h2>
+
+<form class="form-group" method="post">
+    <label>Yayın Evi Adı</label>
+    @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Name, null, new { @class = "text-danger" })
+    <br />
+    <button class="btn btn-success">Yayın Evi Ekle</button>
+</form>
+
+
+

@@ -1,0 +1,51 @@
+﻿@using MvcLibrary.Models.Entity
+@model List<Tbl_Writer>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h2>Yazarlar</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Ad</th>
+        <th>Soyad</th>
+        <th>Açıklama</th>
+        <th>Durum</th>
+        <th>Aktif / Pasif</th>
+        <th>Güncelle</th>
+        <th>Detay</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>@item.ID</td>
+    <td>@item.FirstName</td>
+    <td>@item.LastName</td>
+    <td>@item.Details</td>
+    @if (item.Status == false)
+    {
+        <td><span class="badge bg-danger">Pasif</span></td>
+    }
+    else
+    {
+        <td><span class="badge badge-success">Aktif</span></td>
+    }
+    @if (item.Status == false)
+    {
+        <td>@Html.ActionLink("Aktif Yap", "DeleteWriter", new { id = item.ID }, new { @class = "btn btn-success", onclick = "return confirm('Gerçekten Pasif Yapmak İstiyor musunuz ?')" })</td>
+    }
+    else
+    {
+        <td>@Html.ActionLink("Pasif Yap", "DeleteWriter", new { id = item.ID }, new { @class = "btn btn-danger", onclick = "return confirm('Gerçekten Aktif Yapmak İstiyor musunuz ?')" })</td>
+    }
+    <td><a href="/Writer/GetWriter/@item.ID" class="btn btn-primary">Güncelle</a></td>
+    <td><a href="/Writer/GetWriterDetails/@item.ID" class="btn btn-info">Yazar Kitapları</a></td>
+</tr>
+    }
+</table>
+<a href="/Writer/AddWriter/" class="btn btn-success">Yeni Yazar Ekle</a>
+<br />
+

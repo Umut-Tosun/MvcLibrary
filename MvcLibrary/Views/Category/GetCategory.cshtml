@@ -1,0 +1,25 @@
+﻿@model MvcLibrary.Models.Entity.Tbl_Categories
+@{
+    ViewBag.Title = "GetCategory";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h2>Kategori Güncelle</h2>
+
+@using (Html.BeginForm("UpdateCategory", "Category", FormMethod.Post))
+{
+<div class="form-group">
+    <br />
+    @Html.Label("Kategori ID")
+    <br />
+    @Html.TextBoxFor(x => x.ID,new { @readonly= "true",@class="form-control"})
+    <br />
+    @Html.Label("Kategori Ad")
+    <br />
+    @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-primary">Güncelle</button>
+</div>
+  
+}
+

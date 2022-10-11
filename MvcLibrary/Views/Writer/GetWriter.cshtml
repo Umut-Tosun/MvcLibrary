@@ -1,0 +1,31 @@
+﻿@model MvcLibrary.Models.Entity.Tbl_Writer
+@{
+    ViewBag.Title = "GetWriter";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h2>Yazar Güncelle</h2>
+
+@using (Html.BeginForm("UpdateWriter", "Writer", FormMethod.Post))
+{
+<div class="form-group">
+    <br />
+    @Html.Label("Yazar ID")
+    <br />
+    @Html.TextBoxFor(x => x.ID, new { @readonly = "true", @class = "form-control" })
+    <br />
+    @Html.Label("Yazar Ad")
+    <br />
+    @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control" })
+    <br />
+    @Html.Label("Yazar Soyad")
+    @Html.TextBoxFor(x => x.LastName, new { @class = "form-control" })
+    <br />
+    @Html.Label("Yazar Açıklama")
+    @Html.TextAreaFor(x => x.Details, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-primary">Güncelle</button>
+</div>
+
+}
+

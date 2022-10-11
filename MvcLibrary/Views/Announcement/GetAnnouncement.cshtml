@@ -1,0 +1,30 @@
+﻿@model MvcLibrary.Models.Entity.Tbl_Announcement
+@{
+    ViewBag.Title = "GetAnnouncement";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h2>Duyuru Güncelle [ Bu işlem zorunda kalmadıkça kullanılmamalıdır.]</h2>
+@using (Html.BeginForm("UpdateAnnouncement", "Announcement", FormMethod.Post))
+{
+<div class="form-group">
+    <br />
+    @Html.Label("Duyuru ID")
+    @Html.TextBoxFor(x => x.ID, new { @readonly = "true", @class = "form-control" })
+    <br />
+    @Html.Label("Başlık")
+    @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+    <br />
+    @Html.Label("Kategori")
+    @Html.TextBoxFor(x => x.Category, new { @class = "form-control" })
+    <br />
+    @Html.Label("İçerik")
+    @Html.TextAreaFor(x => x.Content, new { @class = "form-control" })
+    <br />
+    @Html.Label("Tarih")
+    @Html.TextAreaFor(x => x.Date, new { @readonly = "true", @class = "form-control" })
+    <br />
+    <button class="btn btn-primary">Güncelle</button>
+</div>
+}
+

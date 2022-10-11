@@ -1,0 +1,61 @@
+﻿@using MvcLibrary.Models.Entity
+@model List<Tbl_Book>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h2>Kitaplar</h2>
+@using (Html.BeginForm("Index", "Book", FormMethod.Post))
+{
+    <div style="margin-bottom:15px;margin-top:15px;">
+        <b>Aranacak Kitap Adı : </b> @Html.TextBox("bookName")
+        <input type="submit" class="btn btn-info" value="Ara" />
+    </div>
+}
+<table class="table table-striped">
+    <tr style="background-color:#00ffca">
+        <th>#</th>
+        <th>Ad</th>
+        <th>Yazar</th>
+        <th>Sayfa</th>
+        <th>Kategori</th>
+        <th>Yayın Evi</th>
+        <th>Basım Yılı</th>
+        <th>Durum</th>
+        <th>Aktif / Pasif</th>
+        <th>Güncelle</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ID</td>
+            <td>@item.Name</td>
+            <td>@item.Tbl_Writer.FirstName  @item.Tbl_Writer.LastName</td>
+            <td>@item.PageCount</td>
+            <td>@item.Tbl_Categories.Name</td>
+            <td>@item.Tbl_Publisher.Name</td>
+            <td>@item.PublicationYear</td>
+            @if (item.Status == false)
+            {
+                <td><span class="badge bg-danger">Pasif</span></td>
+            }
+            else
+            {
+                <td><span class="badge badge-success">Aktif</span></td>
+            }
+            @if (item.Status == false)
+            {
+                <td>@Html.ActionLink("Aktif Yap", "DeleteBook", new { id = item.ID }, new { @class = "btn btn-success", onclick = "return confirm('Gerçekten Aktif Yapmak İstiyor musunuz ?')" })</td>
+            }
+            else
+            {
+                <td>@Html.ActionLink("Pasif Yap", "DeleteBook", new { id = item.ID }, new { @class = "btn btn-danger", onclick = "return confirm('Gerçekten Pasif Yapmak İstiyor musunuz ?')" })</td>
+            }
+            <td><a href="/Book/GetBook/@item.ID" class="btn btn-primary">Güncelle</a></td>
+        </tr>
+    }
+</table>
+<a href="/Book/AddBook/" class="btn btn-success">Yeni Kitap Ekle</a>
+<br />
+

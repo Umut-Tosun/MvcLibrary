@@ -1,0 +1,44 @@
+﻿@using MvcLibrary.Models.Entity
+@model List<Tbl_Categories>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h2>Kategoriler</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Ad</th>
+        <th>Durum</th>
+        <th>Aktif / Pasif</th>
+        <th>Güncelle</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ID</td>
+            <td>@item.Name</td>
+            @if (item.Status == false)
+            {
+                <td><span class="badge bg-danger">Pasif</span></td>
+            }
+            else
+            {
+                <td><span class="badge badge-success">Aktif</span></td>
+            }
+            @if (item.Status == false)
+            {
+                <td><a href="/Category/DeleteCategory/@item.ID" class="btn btn-success">Aktif Yap</a></td>
+            }
+            else
+            {
+                <td><a href="/Category/DeleteCategory/@item.ID" class="btn btn-danger">Pasif Yap</a></td>
+            }
+            <td><a href="/Category/GetCategory/@item.ID" class="btn btn-primary">Güncelle</a></td>
+        </tr>
+    }
+</table>
+<a href="/Category/AddCategory/" class="btn btn-success">Yeni Kategori Ekle</a>
+

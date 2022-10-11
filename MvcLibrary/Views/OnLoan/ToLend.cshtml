@@ -1,0 +1,27 @@
+﻿@model MvcLibrary.Models.Entity.Transactions
+@{
+    ViewBag.Title = "ToLend";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+
+<h2>Ödünç Kitap Ver</h2>
+
+<form class="form-group" method="post">
+
+    <label>Kitap</label>
+    @Html.DropDownListFor(x => x.Tbl_Book.ID, (List<SelectListItem>)ViewBag.books, new { @class = "form-control" })
+    <br />
+    <label>Personel</label>
+    @Html.DropDownListFor(x => x.Tbl_Employee.ID, (List<SelectListItem>)ViewBag.employs, new { @class = "form-control" })
+    <br />
+    <label>Üye</label>
+    @Html.DropDownListFor(x => x.Tbl_Member.ID, (List<SelectListItem>)ViewBag.members, new { @class = "form-control" })
+    <br />
+    <label>Kitap İade Tarihi</label>
+    @Html.TextBoxFor(x => x.Return_Date, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-success">Ödünç Kitap Ver</button>
+</form>
+
+

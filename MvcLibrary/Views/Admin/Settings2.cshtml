@@ -1,0 +1,67 @@
+﻿@using MvcLibrary.Models.Entity
+@model List<Tbl_Admin>
+@{
+    ViewBag.Title = "Settings2";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+<link rel="stylesheet" href="/AdminLTE-3.0.4/plugins/fontawesome-free/css/all.min.css">
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Kullanıcı Adı</th>
+        <th>Yetki</th>
+        <th>Düzenle</th>
+        <th>Sil</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            <td>@item.ID</td>
+            <td>@item.UserName</td>
+            <td>@item.Role</td>
+            <td>
+                <a class="btn btn-info btn-sm" href="/Admin/GetAdmin/@item.ID">
+                    <i class="fas fa-pencil-alt">
+                    </i>
+                    Düzenle
+                </a>
+            </td>
+            <td>
+                <a class="btn btn-danger btn-sm" href="/Admin/DeleteAdmin/@item.ID">
+                    <i class="fas fa-trash">
+                    </i>
+                    Sil
+                </a>
+            </td>
+        </tr>
+
+    }
+</table>
+<br />
+<button class="btn btn-primary" data-toggle="modal" data-target="#modal1">Yeni Admin Ekle</button>
+<div class="modal" id="modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Admin Ekleme Paneli</h2>
+            </div>
+            <form method="post" action="/Admin/AddAdmin/">
+                <div class="modal-body">
+                    <label>Kullanıcı Adı</label>
+                    <input type="text" name="UserName" class="form-control" />
+                    <br />
+                    <label>Şifre</label>
+                    <input type="password" name="Password" class="form-control" />
+                    <br />
+                    <label>Yetki</label>
+                    <input type="text" name="Role" class="form-control" />
+                    <br />
+                     <button type="submit" class="btn btn-info">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

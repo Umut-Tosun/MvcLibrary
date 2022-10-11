@@ -1,0 +1,43 @@
+﻿@model MvcLibrary.Models.Entity.Tbl_Member
+@{
+    ViewBag.Title = "GetMember";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h2>Üye Güncelle</h2>
+
+@using (Html.BeginForm("UpdateMember", "Member", FormMethod.Post))
+{
+    <div class="form-group">
+        <br />
+        @Html.Label("Üye ID")
+        @Html.TextBoxFor(x => x.ID, new { @readonly = "true", @class = "form-control" })
+        <br />
+        @Html.Label("Üye Ad")
+        @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control" })
+        <br />
+        @Html.Label("Üye Soyad")
+        @Html.TextBoxFor(x => x.LastName, new { @class = "form-control" })
+        <br />
+        @Html.Label("Eposta")
+        @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+        <br />
+        @Html.Label("Telefon")
+        @Html.TextBoxFor(x => x.PhoneNumber, new { @class = "form-control" })
+        <br />
+        @Html.Label("Okul")
+        @Html.TextBoxFor(x => x.School, new { @class = "form-control" })
+        <br />
+        @Html.Label("Görsel Yolu")
+        @Html.TextBoxFor(x => x.ImageUrl, new { @class = "form-control" })
+        <br />
+        @Html.Label("Kullanıcı Adı")
+        @Html.TextBoxFor(x => x.UserName, new { @class = "form-control" })
+        <br />
+        @Html.Label("Şifre")
+        @Html.TextBoxFor(x => x.Password, new { @class = "form-control" })
+        <br />
+        <button class="btn btn-primary">Güncelle</button>
+    </div>
+}
+

@@ -1,0 +1,31 @@
+﻿@using MvcLibrary.Models.Entity
+@model List<Tbl_Book>
+@{
+    ViewBag.Title = "GetWriterDetails";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h2>@ViewBag.writerFullName  Kitapları</h2>
+<table class="table table-striped">
+    <tr>
+        <th>#</th>
+        <th>Kitap Adı</th>
+        <th>Kategori</th>
+        <th>Sayfa</th>
+        <th>Yayınlanma Yılı</th>
+        <th>Yayın evi</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ID</td>
+            <td>@item.Name</td>
+            <td>@item.Tbl_Categories.Name</td>
+            <td>@item.PageCount</td>
+            <td>@item.PublicationYear</td>
+            <td>@item.Tbl_Publisher.Name</td>
+        </tr>
+    }
+</table>
+<a class="btn btn-info" href="/Writer/Index/">Yazar Sayfasına Geri Dön</a>
+

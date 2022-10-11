@@ -1,0 +1,58 @@
+﻿@using MvcLibrary.Models.Entity
+@model List<Tbl_Employee>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h2>Çalışanlar</h2>
+@using (Html.BeginForm("Index", "Employee", FormMethod.Post))
+{
+    <div style="margin-bottom:15px;margin-top:15px;">
+        <b>Aranacak Personel Adı : </b> @Html.TextBox("employeeName")
+        <input type="submit" class="btn btn-info" value="Ara" />
+    </div>
+}
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Ad</th>
+        <th>Soyad</th>
+        <th>Eposta</th>
+        <th>Telefon Numarası</th>
+        <th>Durum</th>
+        <th>Aktif / Pasif</th>
+        <th>Güncelle</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ID</td>
+            <td>@item.FirstName</td>
+            <td>@item.LastName</td>
+            <td>@item.Email</td>
+            <td>@item.MobilePhone</td>
+          
+            @if (item.Status == false)
+            {
+                <td><span class="badge bg-danger">Pasif</span></td>
+            }
+            else
+            {
+                <td><span class="badge badge-success">Aktif</span></td>
+            }
+            @if (item.Status == false)
+            {
+                <td>@Html.ActionLink("Aktif Yap", "DeleteEmployee", new { id = item.ID }, new { @class = "btn btn-success", onclick = "return confirm('Gerçekten Aktif Yapmak İstiyor musunuz ?')" })</td>
+            }
+            else
+            {
+                <td>@Html.ActionLink("Pasif Yap", "DeleteEmployee", new { id = item.ID }, new { @class = "btn btn-danger", onclick = "return confirm('Gerçekten Pasif Yapmak İstiyor musunuz ?')" })</td>
+            }
+            <td><a href="/Employee/GetEmployee/@item.ID" class="btn btn-primary">Güncelle</a></td>
+        </tr>
+    }
+</table>
+<a href="/Employee/AddEmployee/" class="btn btn-success">Yeni Personel Ekle</a>
+<br />
+

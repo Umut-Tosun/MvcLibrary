@@ -1,0 +1,22 @@
+﻿@model MvcLibrary.Models.Entity.Tbl_Writer
+@{
+    ViewBag.Title = "AddWriter";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h2>Yazar Ekle</h2>
+<form class="form-group" method="post">
+    <label>Yazar Adı</label>
+    @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.FirstName, null, new { @class = "text-danger" })
+    <br />
+    <label>Yazar Soyadı</label>
+    @Html.TextBoxFor(x => x.LastName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.LastName, null, new { @class = "text-danger" })
+    <br />
+    <label>Yazar Detayları</label>
+    @Html.TextAreaFor(x => x.Details, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-success">Yeni Yazar Ekle</button>
+</form>
+

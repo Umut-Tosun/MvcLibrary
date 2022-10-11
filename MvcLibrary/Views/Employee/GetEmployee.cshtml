@@ -1,0 +1,34 @@
+﻿@model MvcLibrary.Models.Entity.Tbl_Employee
+@{
+    ViewBag.Title = "GetEmployee";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h2>Personel Bilgilerini Güncelle</h2>
+
+@using (Html.BeginForm("UpdateEmployee", "Employee", FormMethod.Get))
+{
+<div class="form-group">
+    <br />
+    @Html.Label("Personel ID")
+    @Html.TextBoxFor(x => x.ID, new { @readonly = "true", @class = "form-control" })
+    <br />
+    @Html.Label("Personel Ad")
+    @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.FirstName, null, new { @class = "text-danger" })
+    <br />
+    @Html.Label("Personel Soyad")
+    @Html.TextBoxFor(x => x.LastName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.LastName, null, new { @class = "text-danger" })
+    <br />
+    @Html.Label("Eposta")
+    @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+    <br />
+    @Html.Label("Telefon Numarası")
+    @Html.TextAreaFor(x => x.MobilePhone, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-primary">Güncelle</button>
+</div>
+
+}
+

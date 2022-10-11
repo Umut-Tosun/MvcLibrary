@@ -1,0 +1,29 @@
+﻿@model MvcLibrary.Models.Entity.Tbl_Employee
+@{
+    ViewBag.Title = "AddEmployee";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h2>Personel Ekle</h2>
+
+<form class="form-group" method="post">
+    <label>Personel Adı</label>
+    @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.FirstName, null, new { @class = "text-danger" })
+    <br />
+    <label>Personel Soyadı</label>
+    @Html.TextBoxFor(x => x.LastName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.LastName, null, new { @class = "text-danger" })
+    <br />
+    <label>Email</label>
+    @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Email, null, new { @class = "text-danger" })
+    <br />
+    <label>Telefon</label>
+    @Html.TextBoxFor(x => x.MobilePhone, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.MobilePhone, null, new { @class = "text-danger" })
+    <br />
+    <button class="btn btn-success">Personel Ekle</button>
+</form>
+
+

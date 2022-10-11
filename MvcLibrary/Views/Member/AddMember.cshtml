@@ -1,0 +1,42 @@
+﻿@model MvcLibrary.Models.Entity.Tbl_Member
+@{
+    ViewBag.Title = "AddMember";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+
+<h2>Üye Ekle</h2>
+
+<form class="form-group" method="post">
+    <label>Üye Adı</label>
+    @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.FirstName, null, new { @class = "text-danger" })
+    <br />
+    <label>Üye Soyadı</label>
+    @Html.TextBoxFor(x => x.LastName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.LastName, null, new { @class = "text-danger" })
+    <br />
+    <label>Eposta</label>
+    @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Email, null, new { @class = "text-danger" })
+    <br />
+    <label>Görsel</label>
+    @Html.TextBoxFor(x => x.ImageUrl, new { @class = "form-control" })
+    <br />
+    <label>Telefon Numarası</label>
+    @Html.TextBoxFor(x => x.PhoneNumber, new { @class = "form-control" })
+    <br />
+    <label>Okul</label>
+    @Html.TextBoxFor(x => x.School, new { @class = "form-control" })
+    <br />
+    <label>Kullanıcı Adı</label>
+    @Html.TextBoxFor(x => x.UserName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.UserName, null, new { @class = "text-danger" })
+    <br />
+    <label>Şifre</label>
+    @Html.TextBoxFor(x => x.Password, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Password, null, new { @class = "text-danger" })
+    <br />
+    <button class="btn btn-success">Üye Ekle</button>
+</form>
+

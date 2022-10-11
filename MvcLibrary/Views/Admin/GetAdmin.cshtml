@@ -1,0 +1,33 @@
+﻿@model MvcLibrary.Models.Entity.Tbl_Admin
+@{
+    ViewBag.Title = "GetAdmin";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h2>Admin Güncelle</h2>
+
+@using (Html.BeginForm("UpdateAdmin", "Admin", FormMethod.Post))
+{
+<div class="form-group">
+    <br />
+    @Html.Label("Admin ID")
+    <br />
+    @Html.TextBoxFor(x => x.ID, new { @readonly = "true", @class = "form-control" })
+    <br />
+    @Html.Label("Admin Kullanıcı Adı")
+    <br />
+    @Html.TextBoxFor(x => x.UserName, new { @class = "form-control" })
+    <br />
+    @Html.Label("Yetki")
+    <br />
+    @Html.TextBoxFor(x => x.Role, new { @class = "form-control" })
+    <br />
+    @Html.Label("Şifre")
+    <br />
+    @Html.TextBoxFor(x => x.Password, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-primary">Güncelle</button>
+</div>
+
+}
+

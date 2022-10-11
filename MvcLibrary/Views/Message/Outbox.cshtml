@@ -1,0 +1,306 @@
+﻿@using MvcLibrary.Models.Entity
+@model List<Messages>
+@{
+    ViewBag.Title = "Outbox";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>AdminLTE 3 | Mailbox</title>
+
+    <!-- Tell the browser to be responsive to screen width -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+
+    <!-- Ionicons -->
+
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+    <!-- icheck bootstrap -->
+
+    <link rel="stylesheet" href="../../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+
+    <!-- Theme style -->
+
+    <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+
+    <!-- Google Font: Source Sans Pro -->
+
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+</head>
+
+<body class="hold-transition sidebar-mini">
+
+    <!-- Main Sidebar Container -->
+    <!-- Main content -->
+
+    <section class="content">
+
+        <div class="row">
+
+            @Html.Action("PartialSlider", "Message")
+
+            <!-- /.col -->
+
+            <div class="col-md-9">
+
+                <div class="card card-primary card-outline">
+
+                    <div class="card-header">
+
+                        <h3 class="card-title">Mesajlar/Giden Kutusu</h3>
+
+                    </div>
+                    <div class="card-body p-0">
+
+                        <div class="mailbox-controls">
+
+                            <button type="button" class="btn btn-default btn-sm checkbox-toggle">
+
+                                <i class="far fa-square"></i>
+
+                            </button>
+
+                            <div class="btn-group">
+
+                                <button type="button" class="btn btn-default btn-sm"><i class="far fa-trash-alt"></i></button>
+
+                                <button type="button" class="btn btn-default btn-sm"><i class="fas fa-reply"></i></button>
+
+                                <button type="button" class="btn btn-default btn-sm"><i class="fas fa-share"></i></button>
+
+                            </div>
+
+                            <!-- /.btn-group -->
+
+                            <button type="button" class="btn btn-default btn-sm"><i class="fas fa-sync-alt"></i></button>
+
+                            <div class="float-right">
+
+                                1-50/200
+
+                                <div class="btn-group">
+
+                                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-left"></i></button>
+
+                                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-right"></i></button>
+
+                                </div>
+
+                                <!-- /.btn-group -->
+
+                            </div>
+
+                            <!-- /.float-right -->
+
+                        </div>
+
+                        <div class="table-responsive mailbox-messages">
+
+                            <table class="table table-hover table-striped">
+
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+
+
+                                            <td class="mailbox-name"><a href="read-mail.html">@item.ReceivingMember</a></td>
+
+                                            <td class="mailbox-subject">
+
+                                                <b>@item.Subject</b>
+
+                                            </td>
+
+                                            <td class="mailbox-attachment"></td>
+
+                                            <td class="mailbox-date">@Convert.ToDateTime(item.Date).ToString("dd/MM/yyyy")</td>
+
+                                        </tr>
+                                    }
+                                </tbody>
+
+                            </table>
+
+                            <!-- /.table -->
+
+                        </div>
+
+                        <!-- /.mail-box-messages -->
+
+                    </div>
+
+                    <!-- /.card-body -->
+
+                    <div class="card-footer p-0">
+
+                        <div class="mailbox-controls">
+
+                            <!-- Check all button -->
+
+                            <button type="button" class="btn btn-default btn-sm checkbox-toggle">
+
+                                <i class="far fa-square"></i>
+
+                            </button>
+
+                            <div class="btn-group">
+
+                                <button type="button" class="btn btn-default btn-sm"><i class="far fa-trash-alt"></i></button>
+
+                                <button type="button" class="btn btn-default btn-sm"><i class="fas fa-reply"></i></button>
+
+                                <button type="button" class="btn btn-default btn-sm"><i class="fas fa-share"></i></button>
+
+                            </div>
+
+                            <!-- /.btn-group -->
+
+                            <button type="button" class="btn btn-default btn-sm"><i class="fas fa-sync-alt"></i></button>
+
+                            <div class="float-right">
+
+                                1-50/200
+
+                                <div class="btn-group">
+
+                                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-left"></i></button>
+
+                                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-right"></i></button>
+
+                                </div>
+
+                                <!-- /.btn-group -->
+
+                            </div>
+
+                            <!-- /.float-right -->
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- /.card -->
+
+            </div>
+
+            <!-- /.col -->
+
+        </div>
+    </section>
+
+
+    <script src="../../plugins/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap 4 -->
+
+    <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- AdminLTE App -->
+
+    <script src="../../dist/js/adminlte.min.js"></script>
+
+    <!-- Page Script -->
+
+    <script>
+$(function () {
+
+    //Enable check and uncheck all functionality
+
+    $('.checkbox-toggle').click(function () {
+
+      var clicks = $(this).data('clicks')
+
+      if (clicks) {
+
+        //Uncheck all checkboxes
+
+        $('.mailbox-messages input[type=\'checkbox\']').prop('checked', false)
+
+        $('.checkbox-toggle .far.fa-check-square').removeClass('fa-check-square').addClass('fa-square')
+
+      } else {
+
+        //Check all checkboxes
+
+        $('.mailbox-messages input[type=\'checkbox\']').prop('checked', true)
+
+        $('.checkbox-toggle .far.fa-square').removeClass('fa-square').addClass('fa-check-square')
+
+      }
+
+      $(this).data('clicks', !clicks)
+
+    })
+
+
+
+    //Handle starring for glyphicon and font awesome
+
+    $('.mailbox-star').click(function (e) {
+
+      e.preventDefault()
+
+      //detect type
+
+      var $this = $(this).find('a > i')
+
+      var glyph = $this.hasClass('glyphicon')
+
+      var fa    = $this.hasClass('fa')
+
+
+
+      //Switch states
+
+      if (glyph) {
+
+        $this.toggleClass('glyphicon-star')
+
+        $this.toggleClass('glyphicon-star-empty')
+
+      }
+
+
+
+      if (fa) {
+
+        $this.toggleClass('fa-star')
+
+        $this.toggleClass('fa-star-o')
+
+      }
+
+    })
+
+  })</script>
+
+    <!-- AdminLTE for demo purposes -->
+
+    <script src="../../dist/js/demo.js"></script>
+
+</body>
+
+</html>
+
+
+
+
+
